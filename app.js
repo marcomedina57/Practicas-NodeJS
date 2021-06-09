@@ -1,23 +1,46 @@
 const express = require('express')
-const app = express()
- 
+const hbs = require('hbs');
+require('dotenv').config();
+// TODO REQUIRE HBS
 
-// Servir contenido estatico
+const app = express()
+
+const port = process.env.PORT;
 
 app.use(express.static('public'));
 
+app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials', function(err){
+
+});
+
+app.get('/', function(req, res){
+    res.render('home', {
+        nombre: 'Fernando Herrera',
+        titulo: 'Curso de Node'
+    });
+});
 
 
 app.get('/generic', function(req, res){
-    res.sendFile(__dirname + '/public/generic.html')
+    res.render('generic', {
+        nombre: 'Generic',
+        titulo: 'Ponte nuevo'
+    })
 });
-
 app.get('/elements', function(req, res){
-    res.sendFile(__dirname + '/public/elements.html')
+    res.render('elements', {
+        nombre: 'Elements',
+        titulo: 'Ponte nuevo'
+    })
 });
 
-app.get('*', function(req, res){
-    res.sendFile(__dirname + '/public/index.html');
-});
+// app.get('/elements', function(req, res){
+//     res.sendFile(__dirname + '/public/elements.html')
+// });
 
-app.listen(8080)
+// app.get('*', function(req, res){
+//     res.sendFile(__dirname + '/public/index.html');
+// });
+
+app.listen(port);
