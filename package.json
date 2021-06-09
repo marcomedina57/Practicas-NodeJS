@@ -1,5 +1,5 @@
 {
-  "name": "04-tareas-hacer",
+  "name": "05-webserver",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,8 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "colors": "^1.4.0",
-    "inquirer": "^8.1.0",
-    "uuid": "^8.3.2"
+    "express": "^4.17.1"
   }
 }
