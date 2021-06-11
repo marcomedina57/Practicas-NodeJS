@@ -1,18 +1,25 @@
 {
-  "name": "05-webserver",
+  "name": "Practicas-NodeJS",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcomedina57/Practicas-NodeJS.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcomedina57/Practicas-NodeJS/issues"
+  },
+  "homepage": "https://github.com/marcomedina57/Practicas-NodeJS#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "hbs": "^4.1.2"
+    "express": "^4.17.1"
   }
 }
