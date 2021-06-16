@@ -13,7 +13,7 @@ const dbConnection = async() => {
 
         });
 
-        console.log('Base de datos online');
+        console.log('Base de datos online puerto ' + process.env.PORT);
     }
     catch(error){
         console.log(error);
