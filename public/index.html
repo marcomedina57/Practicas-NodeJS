@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-signin-client_id" content="564742748239-e0c9gc7hkpqbdag61r5h679gff7rkobn.apps.googleusercontent.com">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Google Signin</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
-    <h1>Acceso denegado</h1>
+    <h1>Google Signin</h1>
+
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
+
+    <script>
+
+     
+        function onSignIn(googleUser) {
+            console.log('mira sii');
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+        var id_token = googleUser.getAuthResponse().id_token;
+      var url = (window.location.hostname.includes('localhost')) ?
+        'http://localhost:8081/api/auth/google' : 'produccion';
+        const data = {id_token};
+        fetch(url, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        })
+        .then(resp => resp.json())
+        .then(data => console.log('Nuestro server', data))
+        .catch(console.log);
+
+}
+    
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+
+    </script>
 </body>
 </html>
